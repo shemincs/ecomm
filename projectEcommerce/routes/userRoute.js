@@ -3,7 +3,7 @@ const router = express.Router();
 const session = require('express-session');
 const nocache=require("nocache")
 
-
+const dotenv=require('dotenv').config()
 
 const userController = require('../controller/authCtrl')
 const auth=require('../middleware/Auth')
@@ -12,7 +12,7 @@ const PlaceOrdercontroller=require('../controller/PlaceOrderCtrl')
 
 const MDBsession=require('connect-mongodb-session')(session)
 const store=new MDBsession({
-    uri:'mongodb://127.0.0.1:27017/ecommerce',
+    uri:process.env.MONGODB_URI,
     collection:"session_idS"
 })
 
