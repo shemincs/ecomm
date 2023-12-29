@@ -1,0 +1,26 @@
+<div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+    <div class="wrapper wrapper--w780">
+        <div class="card card-3">
+            <div class="card-heading"></div>
+            <div class="card-body">
+                <h2 class="title">Enter OTP</h2>
+                <form action="/OTP" method="post">
+                    <div class="input-group">
+                      <%  if(locals.message){%>
+                        <h1 style="color:red"><%= message%></h1>
+                            
+                      <% } %> 
+                        <input class="input--style-3" type="text" placeholder="OTP" name="otp" id="otp">
+                        <p id="otp_error" style="color: red;"></p>
+                    </div>
+
+                    <!-- You can add additional input fields or instructions if needed -->
+
+                    <button class="btn btn--pill btn--green" type="submit">Verify OTP</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
