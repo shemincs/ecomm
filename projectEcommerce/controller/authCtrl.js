@@ -945,7 +945,7 @@ const myAccount = async (req, res) => {
     }
 
     console.log("User Addresses:", userAddresses.addresses);
-    res.render("user/myAccount", { userList, addresses: userAddresses.addresses });
+    res.render("User/myAccount", { userList, addresses: userAddresses.addresses });
 
   } catch (error) {
     console.log("Error:", error.message);
