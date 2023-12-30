@@ -129,7 +129,7 @@ const getHomePage = async (req, res, next) => {
 
 
     // Rendering moved outside the 'if' block to ensure it happens regardless of the search or sort
-    res.render('user/Home', { products, session, layout: './layouts/AuthLayout.ejs' });
+    res.render('User/Home', { products, session, layout: './layouts/AuthLayout.ejs' });
 
   } catch (error) {
     console.log(error);
