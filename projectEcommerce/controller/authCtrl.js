@@ -18,7 +18,7 @@ const generateRandomSecret = () => {
 
 const getSignupPage = async (req, res, next) => {
   try {
-    res.render('User/signup', { layout: './layouts/AuthLayout.ejs' })
+    res.render('User/signup', { layout: './layouts/Authlayout.ejs' })
   } catch (error) {
     console.log(error)
   }
@@ -28,7 +28,7 @@ const getLoginPage = async (req, res, next) => {
   console.log('jj');
   try {
     const errorMessage = "Invalid email and password"
-    res.render('User/login', { layout: './layouts/AuthLayout.ejs', messageLayout: 'Password incorrect', errorMessage })
+    res.render('User/login', { layout: './layouts/Authlayout.ejs', messageLayout: 'Password incorrect', errorMessage })
   } catch (error) {
     console.log(error)
   }
@@ -501,7 +501,7 @@ const Resetpassword = async (req, res) => {
     console.log("pasword found")
     const user = await User.findOne({ email: email })
     if (!user) {
-      render("User/Resetpassword", { layout: './layouts/AuthLayout.ejs', })
+      render("User/Resetpassword", { layout: './layouts/Authlayout.ejs', })
     }
 
 
@@ -560,7 +560,7 @@ const mensPage = async (req, res) => {
 
 
 
-    res.render('User/mensPage', { totalpages, currentpage: currentpage, Products: currentproduct, layout: './layouts/AuthLayout.ejs' })
+    res.render('User/mensPage', { totalpages, currentpage: currentpage, Products: currentproduct, layout: './layouts/Authlayout.ejs' })
   } catch (error) {
 
     console.log(error.message)
@@ -618,7 +618,7 @@ const mensPP = async (req, res) => {
 
 const orderPage = async (req, res) => {
   try {
-    res.render('User/orderPage', { layout: './layouts/AuthLayout.ejs' })
+    res.render('User/orderPage', { layout: './layouts/Authlayout.ejs' })
   } catch (error) {
     console.log(error.message)
   }
