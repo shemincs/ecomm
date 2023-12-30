@@ -18,7 +18,7 @@ const generateRandomSecret = () => {
 
 const getSignupPage = async (req, res, next) => {
   try {
-    res.render('user/signup', { layout: './layouts/AuthLayout.ejs' })
+    res.render('User/signup', { layout: './layouts/AuthLayout.ejs' })
   } catch (error) {
     console.log(error)
   }
@@ -28,7 +28,7 @@ const getLoginPage = async (req, res, next) => {
   console.log('jj');
   try {
     const errorMessage = "Invalid email and password"
-    res.render('user/login', { layout: './layouts/AuthLayout.ejs', messageLayout: 'Password incorrect', errorMessage })
+    res.render('User/login', { layout: './layouts/AuthLayout.ejs', messageLayout: 'Password incorrect', errorMessage })
   } catch (error) {
     console.log(error)
   }
@@ -218,7 +218,7 @@ const veryfySignin = async (req, res) => {
       } else {
         console.log('Email sent:', info.response);
         // Email sent successfully, proceed to the OTP page
-        res.render('user/OTP', { Message: 'otp sent' });
+        res.render('User/OTP', { Message: 'otp sent' });
 
       }
     });
@@ -643,7 +643,7 @@ const orderDetails = async (req, res) => {
     // Fetch orders that belong to the current user
     const order1 = await OrderModel.find({ user_id: userId }); // Replace 'userId' with your actual field name
 
-    res.render('user/orderDetails', { order1 });
+    res.render('User/orderDetails', { order1 });
   } catch (error) {
     console.log(error.message);
     // Handle the error appropriately
@@ -660,7 +660,7 @@ const detailButton = async (req, res) => {
     console.log('OOO', id)
     const order1 = await OrderModel.findById(id)
     console.log(order1.product_details)
-    res.render('user/detailButton', { order2: order1 })
+    res.render('User/detailButton', { order2: order1 })
   } catch (error) {
     console.log(error.message)
   }
@@ -766,7 +766,7 @@ const returnOrder = async (req, res) => {
       await user.save();
 
       const walletAmount = user.wallet; // Fetch the updated wallet amount
-      return res.render("user/wallet", { walletAmount });
+      return res.render("User/wallet", { walletAmount });
     } else {
       return res.render('error', { message: 'User not found' });
     }
@@ -853,7 +853,7 @@ const wallet = async (req, res) => {
     }
 
     const walletAmount = user.wallet; // Fetch the wallet amount directly
-    return res.render("user/wallet", { walletAmount });
+    return res.render("User/wallet", { walletAmount });
   } catch (error) {
     return res.render('error', { message: 'Internal server error' });
   }
@@ -941,7 +941,7 @@ const myAccount = async (req, res) => {
     if (!userAddresses) {
       console.log("No addresses found for this user.");
       // Handle the case where no addresses are found for the user
-      return res.render("user/myAccount", { userList, addresses: [] });
+      return res.render("User/myAccount", { userList, addresses: [] });
     }
 
     console.log("User Addresses:", userAddresses.addresses);
@@ -1019,7 +1019,7 @@ const editAddress = async (req, res) => {
     const addressData = addressDetails.addresses[0]; // Extracting the specific address data
     console.log("Address details:", addressData);
     
-    res.render("user/editAddress", { addressData });
+    res.render("User/editAddress", { addressData });
   } catch (error) {
     console.log(error.message);
     res.status(500).send("Internal Server Error");
