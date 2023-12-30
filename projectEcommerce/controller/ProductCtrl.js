@@ -7,7 +7,7 @@ const loadProduct=async(req,res)=>
 {
     try {
         const category=await Category.find();
-        res.render('admin/Addproduct',{category})
+        res.render('Admin/Addproduct',{category})
         console.log(category);
 
     } catch (error) {
@@ -20,7 +20,7 @@ const Addproductpage= async(req, res)=>
     {
         const category=await Category.find({})
         console.log(category);
-        res.render('admin/Addproduct',{Addproductpage})
+        res.render('Admin/Addproduct',{Addproductpage})
     }
     catch(error)
     {
@@ -53,7 +53,7 @@ const  addproduct=async(req,res)=>
         })
         console.log(product)
         product=await product.save()
-        res.redirect('/admin/Product')
+        res.redirect('/Admin/Product')
 
     }catch (error) {
         console.log(error.message)
@@ -73,7 +73,7 @@ const  addproduct=async(req,res)=>
             const totalpages = Math.ceil(products.length / 5);
             const currentproduct = products.slice(startindex,endindex);
 
-    res.render('admin/Product',{products:currentproduct,category , totalpages , currentpage:currentpage})
+    res.render('Admin/Product',{products:currentproduct,category , totalpages , currentpage:currentpage})
   } catch (error) {
     
   }
@@ -182,7 +182,7 @@ const editProduct=async(req,res)=>
         console.log('LLLLL',proId)
         const prodDoc=await  Product.findById(proId)
         const categories=await Category.find();
-        res.render('admin/editProduct',{category:categories,prodDoc})
+        res.render('Admin/editProduct',{category:categories,prodDoc})
     } catch (error) {
         console.log(error.message)
     }
@@ -312,7 +312,7 @@ const updateProduct = async (req, res) => {
         const updatedProduct = await existingProduct.save();
         console.log("updated");
         
-        res.redirect('/admin/Product')
+        res.redirect('/Admin/Product')
        
     } catch (error) {
         console.error(error);

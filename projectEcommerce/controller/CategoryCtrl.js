@@ -36,7 +36,7 @@ const loadCategory = async(req, res)=>
     try
     {
         const categoriesData=await Category.find({})
-        res.render('admin/AdCategory',{categoriesData})
+        res.render('Admin/AdCategory',{categoriesData})
     }
     catch(error)
     {
@@ -62,7 +62,7 @@ const loadEditCategory=async (req,res)=>
         Category.findById(id).then((data)=>{
             console.log(id)
             console.log(data)
-            res.render('admin/EditCategory',{data:data})
+            res.render('Admin/EditCategory',{data:data})
         })
         .catch((error)=>{
             console.log(error)
@@ -84,7 +84,7 @@ const UpdateCategory=async(req,res)=>
         
         if (existingCategory) {
             console.log('Category with the same name already exists (case-insensitive).');
-            res.redirect('/admin/Categories'); // Redirect or handle as needed
+            res.redirect('/Admin/Categories'); // Redirect or handle as needed
             return;
         }
         data={
@@ -96,7 +96,7 @@ const UpdateCategory=async(req,res)=>
       
         await Category.findByIdAndUpdate(id,data)
         console.log('hello')
-        res.redirect('/admin/Categories')
+        res.redirect('/Admin/Categories')
     } catch (error) {
         console.log(error.message)
         

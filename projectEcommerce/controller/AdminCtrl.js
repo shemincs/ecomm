@@ -187,12 +187,12 @@ const verifyadmin = async (req, res) => {
             } else {
                 console.log("Incorrect password");
                 const Message = "Incorrect password";
-                res.render('admin/Adminlogin', {Message });
+                res.render('Admin/Adminlogin', {Message });
             }
         } else {
             console.log("No admin found");
             const Message = "Your email is not correct";
-            res.render('admin/Adminlogin', { Message });
+            res.render('Admin/Adminlogin', { Message });
         }
     } catch (error) {
         console.log(error.message);
@@ -210,7 +210,7 @@ const logOut = (req, res) => {
         if (err) {
             console.error(err);
         }else{
-        res.redirect('/admin/login');
+        res.redirect('/Admin/login');
         }
     });
 };
@@ -317,7 +317,7 @@ const orderStatus = async (req, res) => {
         );
 
         // Handle the updatedOrder as needed (e.g., send it back in the response)
-        res.redirect('/admin/orderAdmin')
+        res.redirect('/Admin/orderAdmin')
     } catch (error) {
         // Handle any errors
         res.status(500).json({ error: 'Internal server error' });
@@ -641,7 +641,7 @@ const salesYearly = async (req, res) => {
   const addCoupon=async(req,res)=>
   {
     try {
-        res.render("admin/coupon")
+        res.render("Admin/coupon")
     } catch (error) {
         console.log("error.message")
     }
@@ -653,7 +653,7 @@ const salesYearly = async (req, res) => {
     try {
         const coupons=await Coupon.find()
         console.log("hihi",coupons);
-        res.render("admin/couponList",{coupons:coupons})
+        res.render("Admin/couponList",{coupons:coupons})
     } catch (error) {
         
     }
@@ -693,7 +693,7 @@ const couponPost=async(req,res)=>
         })
 
            await coupon.save()
-           res.redirect("/admin/couponList")
+           res.redirect("/Admin/couponList")
     } catch (error) {
         console.log(error.message)
     }
